@@ -100,27 +100,76 @@ export function useParticleBurst() {
 export function useAmbientMusic() {
   const synthRef = useRef(null);
   const loopRef = useRef(null);
-  const [playing, setPlaying] = useState(true);
+  const initializedRef = useRef(false);
+  const [playing, setPlaying] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const stored = window.localStorage.getItem("ambientPlaying");
+    return stored === null ? true : stored === "true";
+  });
+
+  const initSynth = async () => {
+    if (initializedRef.current) return;
+    await Tone.start();
+    const reverb = new Tone.Reverb({ decay: 6, wet: 0.7 }).toDestination();
+    const delay = new Tone.FeedbackDelay("8n", 0.4).connect(reverb);
+    synthRef.current = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: "sine" },
+      envelope: { attack: 2, decay: 3, sustain: 0.4, release: 4 },
+      volume: -18,
+    }).connect(delay);
+    const chords = [["C3","E3","G3","B3"], ["A2","C3","E3","G3"], ["F2","A2","C3","E3"], ["G2","B2","D3","F3"]];
+    let ci = 0;
+    loopRef.current = new Tone.Loop((time) => {
+      synthRef.current.triggerAttackRelease(chords[ci++ % 4], "2n", time);
+    }, "2m").start(0);
+    Tone.Transport.stop();
+    initializedRef.current = true;
+  };
+
+  const startMusic = async () => {
+    setPlaying(true);
+    try {
+      await initSynth();
+      if (Tone.Transport.state !== "started") {
+        Tone.Transport.start();
+      }
+    } catch (error) {
+      console.warn("Ambient music start blocked until user interaction.", error);
+    }
+  };
+
+  const stopMusic = () => {
+    if (Tone.Transport.state === "started") {
+      Tone.Transport.stop();
+    }
+    setPlaying(false);
+  };
+
+  useEffect(() => {
+    if (playing) startMusic();
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("ambientPlaying", playing.toString());
+  }, [playing]);
+
+  useEffect(() => {
+    const handleUserGesture = async () => {
+      if (playing && Tone.Transport.state !== "started") {
+        await startMusic();
+      }
+    };
+    window.addEventListener("click", handleUserGesture, { once: true });
+    return () => window.removeEventListener("click", handleUserGesture);
+  }, [playing]);
 
   const toggle = async () => {
-    if (!synthRef.current) {
-      await Tone.start();
-      const reverb = new Tone.Reverb({ decay: 6, wet: 0.7 }).toDestination();
-      const delay = new Tone.FeedbackDelay("8n", 0.4).connect(reverb);
-      synthRef.current = new Tone.PolySynth(Tone.Synth, {
-        oscillator: { type: "sine" },
-        envelope: { attack: 2, decay: 3, sustain: 0.4, release: 4 },
-        volume: -18,
-      }).connect(delay);
-      const chords = [["C3","E3","G3","B3"], ["A2","C3","E3","G3"], ["F2","A2","C3","E3"], ["G2","B2","D3","F3"]];
-      let ci = 0;
-      loopRef.current = new Tone.Loop((time) => {
-        synthRef.current.triggerAttackRelease(chords[ci++ % 4], "2n", time);
-      }, "2m");
-    }
-    if (playing) { Tone.Transport.stop(); setPlaying(false); }
-    else { Tone.Transport.start(); loopRef.current.start(0); setPlaying(true); }
+    if (playing) stopMusic();
+    else await startMusic();
   };
 
   return { playing, toggle };
 }
+
+
+
