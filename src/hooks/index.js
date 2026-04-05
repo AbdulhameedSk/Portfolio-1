@@ -100,7 +100,7 @@ export function useParticleBurst() {
 export function useAmbientMusic() {
   const synthRef = useRef(null);
   const loopRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const toggle = async () => {
     if (!synthRef.current) {
