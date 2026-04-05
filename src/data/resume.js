@@ -1,7 +1,3 @@
-/**
- * ✏️  EDIT THIS FILE to update all portfolio content.
- *     Every section pulls from here — change once, updates everywhere.
- */
 
 export const PERSONAL = {
   name: "SHAIK ABDULHAMEED",
@@ -54,10 +50,12 @@ export const EXPERIENCE = [
 ];
 
 export const PROJECTS = [
-  { name: "AlumNexus", type: "Full Stack", desc: "Alumni networking with real-time connections, JWT auth, and MongoDB.", tech: ["MongoDB", "Express", "React", "Node.js"], color: "#6c9cff" },
-  { name: "Sky Connect", type: "Aviation App", desc: "Flight connectivity with real-time tracking and seamless booking.", tech: ["React", "Node.js", "API", "WebSocket"], color: "#5cffb1" },
-  { name: "Seat Manager", type: "Real-Time", desc: "Restaurant booking with concurrent requests and seat locking.", tech: ["React", "JWT", "RBAC", "Node.js"], color: "#ff6c6c" },
-  { name: "Travel Tales", type: "Travel Platform", desc: "Travel stories with rich media, interactive maps, and community.", tech: ["React", "MongoDB", "Express", "Maps"], color: "#ffb86c" },
+  // { name: "AlumNexus", type: "Full Stack", desc: "Alumni networking with real-time connections, JWT auth, and MongoDB.", tech: ["MongoDB", "Express", "React", "Node.js"], color: "#6c9cff" },
+  // { name: "Sky Connect", type: "Aviation App", desc: "Flight connectivity with real-time tracking and seamless booking.", tech: ["React", "Node.js", "API", "WebSocket"], color: "#5cffb1" },
+  // { name: "Seat Manager", type: "Real-Time", desc: "Restaurant booking with concurrent requests and seat locking.", tech: ["React", "JWT", "RBAC", "Node.js"], color: "#ff6c6c" },
+  // { name: "Travel Tales", type: "Travel Platform", desc: "Travel stories with rich media, interactive maps, and community.", tech: ["React", "MongoDB", "Express", "Maps"], color: "#ffb86c" },
+
+  
 ];
 
 export const SKILLS = [
@@ -67,8 +65,12 @@ export const SKILLS = [
   { cat: "Frontend", items: ["React", "Tailwind", "HTML/CSS", "Redux"] },
   { cat: "DevOps", items: ["Docker", "AWS EC2", "S3", "IAM", "Git", "CI/CD"] },
   { cat: "Cloud", items: ["AWS", "Vercel", "Netlify", "Heroku"] },
+  {
+  cat: "Mathematics",
+  items: ["Calculus"]
+}
 ];
-
+                                                    
 export const SERVICES = [
   { icon: "🎨", title: "Frontend Dev", desc: "Pixel-perfect UIs with React & Tailwind" },
   { icon: "🚀", title: "Backend Dev", desc: "Scalable APIs with Node.js, Go & Express" },

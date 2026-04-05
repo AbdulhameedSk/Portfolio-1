@@ -58,22 +58,62 @@ export function About() {
       <Reveal><SectionHead num="01" label="About" title="What I Do" /></Reveal>
       <Reveal delay={0.1}>
         <div className="about-row" style={{ display: "flex", gap: 48, alignItems: "center", marginBottom: 48 }}>
-          <p style={{ color: "#5a5a7a", lineHeight: 1.9, fontSize: "clamp(0.9rem,1.3vw,1.05rem)", maxWidth: 600, flex: 1 }}>
-            Full Stack Developer passionate about building scalable web applications. Expert in the MERN stack with growing experience in Go, DevOps & AWS. Currently engineering healthcare solutions at Cognizant from <span style={{ color: "#6c9cff", fontWeight: 600 }}>{PERSONAL.location}</span>.
-          </p>
+         <p style={{ color: "#5a5a7a", lineHeight: 1.9, fontSize: "clamp(0.9rem,1.3vw,1.05rem)", maxWidth: 600, flex: 1 }}>
+  Full Stack Developer focused on designing and shipping scalable web applications. Strong in the MERN stack with growing experience in Go, DevOps & AWS. Currently engineering healthcare solutions at Cognizant from <span style={{ color: "#6c9cff", fontWeight: 600 }}>{PERSONAL.location}</span>.
+</p>
           <div className="globe-wrap"><Globe /></div>
         </div>
       </Reveal>
-      <div className="g-svc" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14 }}>
-        {SERVICES.map((s, i) => (
+<div
+  className="g-svc"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: 14,
+    alignItems: "stretch"
+  }}
+>        {SERVICES.map((s, i) => (
           <Reveal key={i} delay={i * 0.05}>
             <GlassCard>
-              <div style={{ padding: "24px 20px" }}>
-                <div style={{ fontSize: "1.4rem", marginBottom: 12 }}>{s.icon}</div>
-                <div style={{ fontFamily: "var(--fd)", fontWeight: 700, fontSize: "0.95rem", marginBottom: 6 }}>{s.title}</div>
-                <div style={{ color: "#5a5a7a", fontSize: "0.8rem", lineHeight: 1.6 }}>{s.desc}</div>
-              </div>
-            </GlassCard>
+  <div
+    style={{
+      padding: "24px 20px",
+      height: "100%",
+      minHeight: 155,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between"
+    }}
+  >
+    <div>
+      <div style={{ fontSize: "1.4rem", marginBottom: 12 }}>
+        {s.icon}
+      </div>
+
+      <div
+        style={{
+          fontFamily: "var(--fd)",
+          fontWeight: 700,
+          fontSize: "0.95rem",
+          marginBottom: 6
+          
+        }}
+      >
+        {s.title}
+      </div>
+
+      <div
+        style={{
+          color: "#5a5a7a",
+          fontSize: "0.8rem",
+          lineHeight: 1.6
+        }}
+      >
+        {s.desc}
+      </div>
+    </div>
+  </div>
+</GlassCard>
           </Reveal>
         ))}
       </div>
@@ -218,29 +258,192 @@ export function Experience() {
 }
 
 /* ═══════════ PROJECTS ═══════════ */
+// export function Projects() {
+//   return (
+//     <section id="projects" className="sect" style={{ padding: "100px clamp(20px,6vw,8vw)" }}>
+//       <Reveal><SectionHead num="03" label="Projects" title="Featured Work" /></Reveal>
+//       <div className="g-proj" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18 }}>
+//         {PROJECTS.map((p, i) => (
+//           <Reveal key={i} delay={i * 0.07}>
+//             <TiltCard color={p.color}>
+//               <div style={{ position: "relative", zIndex: 1 }}>
+//                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+//                   <span style={{ fontFamily: "var(--fd)", fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 800, color: p.color, opacity: 0.12, lineHeight: 1 }}>0{i + 1}</span>
+//                   <span style={{ fontFamily: "var(--fm)", fontSize: "0.6rem", letterSpacing: 2, textTransform: "uppercase", color: p.color, padding: "3px 12px", background: `${p.color}10`, border: `1px solid ${p.color}20`, borderRadius: 16 }}>{p.type}</span>
+//                 </div>
+//                 <div style={{ fontFamily: "var(--fd)", fontSize: "clamp(1.2rem,2vw,1.5rem)", fontWeight: 700, marginBottom: 10 }}>{p.name}</div>
+//                 <p style={{ color: "#5a5a7a", lineHeight: 1.7, fontSize: "clamp(0.8rem,1.1vw,0.88rem)", marginBottom: 16 }}>{p.desc}</p>
+//                 <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+//                   {p.tech.map((t, j) => <span key={j} style={{ padding: "3px 10px", background: `${p.color}0D`, border: `1px solid ${p.color}1A`, borderRadius: 14, fontSize: "0.65rem", color: p.color, fontFamily: "var(--fm)" }}>{t}</span>)}
+//                 </div>
+//               </div>
+//             </TiltCard>
+//           </Reveal>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 export function Projects() {
+  const isEmpty = !PROJECTS || PROJECTS.length === 0;
+
   return (
-    <section id="projects" className="sect" style={{ padding: "100px clamp(20px,6vw,8vw)" }}>
-      <Reveal><SectionHead num="03" label="Projects" title="Featured Work" /></Reveal>
-      <div className="g-proj" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18 }}>
-        {PROJECTS.map((p, i) => (
-          <Reveal key={i} delay={i * 0.07}>
-            <TiltCard color={p.color}>
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-                  <span style={{ fontFamily: "var(--fd)", fontSize: "clamp(2rem,3.5vw,2.8rem)", fontWeight: 800, color: p.color, opacity: 0.12, lineHeight: 1 }}>0{i + 1}</span>
-                  <span style={{ fontFamily: "var(--fm)", fontSize: "0.6rem", letterSpacing: 2, textTransform: "uppercase", color: p.color, padding: "3px 12px", background: `${p.color}10`, border: `1px solid ${p.color}20`, borderRadius: 16 }}>{p.type}</span>
+    <section
+      id="projects"
+      className="sect"
+      style={{ padding: "100px clamp(20px,6vw,8vw)" }}
+    >
+      <Reveal>
+        <SectionHead num="03" label="Projects" title="Featured Work" />
+      </Reveal>
+
+      {isEmpty ? (
+        <Reveal>
+          <div
+            style={{
+              marginTop: 40,
+              padding: "40px 20px",
+              textAlign: "center",
+              border: "1px dashed rgba(108,156,255,0.25)",
+              borderRadius: 16,
+              background: "rgba(108,156,255,0.04)",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--fd)",
+                fontSize: "clamp(1.2rem,2vw,1.6rem)",
+                fontWeight: 700,
+                marginBottom: 10,
+                letterSpacing: 1,
+                
+              }}
+            >
+              Projects Incoming 🚀
+            </div>
+
+            <p
+              style={{
+                color: "#6b6b8a",
+                fontSize: "clamp(0.85rem,1.1vw,0.95rem)",
+                lineHeight: 1.6,
+                maxWidth: 500,
+                margin: "0 auto",
+              }}
+            >
+              Currently cooking some solid builds. New projects will be deployed
+              here soon.
+            </p>
+
+            <div
+              style={{
+                marginTop: 18,
+                fontSize: "0.7rem",
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                color: "rgba(108,156,255,0.6)",
+              }}
+            >
+              Stay tuned
+            </div>
+          </div>
+        </Reveal>
+      ) : (
+        <div
+          className="g-proj"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: 18,
+          }}
+        >
+          {PROJECTS.map((p, i) => (
+            <Reveal key={i} delay={i * 0.07}>
+              <TiltCard color={p.color}>
+                <div style={{ position: "relative", zIndex: 1 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginBottom: 16,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--fd)",
+                        fontSize: "clamp(2rem,3.5vw,2.8rem)",
+                        fontWeight: 800,
+                        color: p.color,
+                        opacity: 0.12,
+                        lineHeight: 1,
+                      }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--fm)",
+                        fontSize: "0.6rem",
+                        letterSpacing: 2,
+                        textTransform: "uppercase",
+                        color: p.color,
+                        padding: "3px 12px",
+                        background: `${p.color}10`,
+                        border: `1px solid ${p.color}20`,
+                        borderRadius: 16,
+                      }}
+                    >
+                      {p.type}
+                    </span>
+                  </div>
+
+                  <div
+                    style={{
+                      fontFamily: "var(--fd)",
+                      fontSize: "clamp(1.2rem,2vw,1.5rem)",
+                      fontWeight: 700,
+                      marginBottom: 10,
+                    }}
+                  >
+                    {p.name}
+                  </div>
+
+                  <p
+                    style={{
+                      color: "#5a5a7a",
+                      lineHeight: 1.7,
+                      fontSize: "clamp(0.8rem,1.1vw,0.88rem)",
+                      marginBottom: 16,
+                    }}
+                  >
+                    {p.desc}
+                  </p>
+
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                    {p.tech.map((t, j) => (
+                      <span
+                        key={j}
+                        style={{
+                          padding: "3px 10px",
+                          background: `${p.color}0D`,
+                          border: `1px solid ${p.color}1A`,
+                          borderRadius: 14,
+                          fontSize: "0.65rem",
+                          color: p.color,
+                          fontFamily: "var(--fm)",
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ fontFamily: "var(--fd)", fontSize: "clamp(1.2rem,2vw,1.5rem)", fontWeight: 700, marginBottom: 10 }}>{p.name}</div>
-                <p style={{ color: "#5a5a7a", lineHeight: 1.7, fontSize: "clamp(0.8rem,1.1vw,0.88rem)", marginBottom: 16 }}>{p.desc}</p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                  {p.tech.map((t, j) => <span key={j} style={{ padding: "3px 10px", background: `${p.color}0D`, border: `1px solid ${p.color}1A`, borderRadius: 14, fontSize: "0.65rem", color: p.color, fontFamily: "var(--fm)" }}>{t}</span>)}
-                </div>
-              </div>
-            </TiltCard>
-          </Reveal>
-        ))}
-      </div>
+              </TiltCard>
+            </Reveal>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -256,7 +459,7 @@ export function Skills() {
           return (
             <Reveal key={i} delay={i * 0.05}>
               <GlassCard>
-                <div style={{ padding: 24 }}>
+                <div style={{ padding: 24, height: "100%", minHeight: 155, display: "flex", flexDirection: "column" }}>
                   <div style={{ fontFamily: "var(--fd)", fontWeight: 700, fontSize: "0.95rem", marginBottom: 16, color }}>{g.cat}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
                     {g.items.map((item, j) => <SkillPill key={j} label={item} color={color} />)}
