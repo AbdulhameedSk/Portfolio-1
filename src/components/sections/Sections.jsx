@@ -16,7 +16,7 @@ export function Hero({ heroName, typedRole, onBurstClick, scrollTo }) {
         <div className="hero-cta" style={{ marginTop: "clamp(24px,4vw,40px)", display: "flex", gap: 14, flexWrap: "wrap" }}>
           <a onClick={e => onBurstClick(e, () => scrollTo("contact"))} style={{ padding: "14px 36px", background: "linear-gradient(135deg,#6c9cff,#4a7aff)", color: "#fff", border: "none", borderRadius: 50, fontFamily: "var(--fm)", fontSize: "0.75rem", letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", textDecoration: "none" }}>Get in Touch</a>
           <a onClick={e => onBurstClick(e, () => scrollTo("projects"))} style={{ padding: "14px 36px", background: "transparent", color: "#e8e6e3", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 50, fontFamily: "var(--fm)", fontSize: "0.75rem", letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", textDecoration: "none" }}>View Projects</a>
-          <a onClick={e => { onBurstClick(e); window.open(PERSONAL.resumeUrl, "_blank"); }} style={{ padding: "14px 36px", background: "transparent", color: "#5cffb1", border: "1px solid rgba(92,255,177,0.2)", borderRadius: 50, fontFamily: "var(--fm)", fontSize: "0.75rem", letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", textDecoration: "none" }}>📥 Resume</a>
+          <a onClick={e => { onBurstClick(e); window.open( "https://drive.google.com/file/d/1p6mPRRfhCx2n355y_H_mc-tbR1DWbbVi/view?usp=sharing"); }} style={{ padding: "14px 36px", background: "transparent", color: "#5cffb1", border: "1px solid rgba(92,255,177,0.2)", borderRadius: 50, fontFamily: "var(--fm)", fontSize: "0.75rem", letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", textDecoration: "none" }}>📥 Resume</a>
         </div>
       </Reveal>
       <Reveal delay={0.6}>
@@ -43,7 +43,7 @@ export function Hero({ heroName, typedRole, onBurstClick, scrollTo }) {
 export function Marquee() {
   const text = "GO • JAVA • PYTHON • REACT • NODE.JS • MONGODB • POSTGRESQL • DOCKER • AWS • PEGA CSA • TYPESCRIPT • EXPRESS • REDIS • ";
   return (
-    <div style={{ overflow: "hidden", padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+    <div style={{ overflow: "hidden", padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.09)" }}>
       <div style={{ display: "flex", animation: "marquee 25s linear infinite", whiteSpace: "nowrap" }}>
         {[0, 1].map((i) => <span key={i} style={{ fontFamily: "var(--fd)", fontSize: "clamp(0.65rem,1vw,0.85rem)", fontWeight: 600, letterSpacing: 4, color: "rgba(108,156,255,0.18)", textTransform: "uppercase", paddingRight: 24 }}>{text}</span>)}
       </div>

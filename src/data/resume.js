@@ -11,7 +11,7 @@ export const PERSONAL = {
   linkedin: "https://linkedin.com/in/shaikabdulhameed",
   github: "https://github.com/AbdulhameedSk",
   githubUsername: "AbdulhameedSk",
-  resumeUrl: "https://abdulhameed-sigma.vercel.app/resume.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1p6mPRRfhCx2n355y_H_mc-tbR1DWbbVi/view?usp=sharing",
 };
 
 export const ROLES = [
@@ -22,10 +22,10 @@ export const ROLES = [
 ];
 
 export const STATS = [
-  { end: 1, suf: "+", label: "Years Exp" },
+  { end: 1.5  , suf: "+", label: "Years Exp" },
   { end: 8.76, suf: "", label: "CGPA" },
-  { end: 4, suf: "+", label: "Projects" },
-  { end: 96.8, suf: "%", label: "XII Score" },
+  { end: 8, suf: "+", label: "Projects" },
+  { end: 96.2, suf: "%", label: "XII Score" },
 ];
 
 export const EXPERIENCE = [
@@ -80,7 +80,7 @@ export const SERVICES = [
 
 export const EDUCATION = [
   { degree: "B.Tech — CSE", school: "Vishnu Institute of Technology", score: "8.76 CGPA", year: "2021–25" },
-  { degree: "Intermediate — BIEAP", school: "Senior Secondary", score: "96.8%", year: "2019–21" },
+  { degree: "Intermediate — BIEAP", school: "Senior Secondary", score: "96.2%", year: "2019–21" },
   { degree: "SSC Board", school: "Secondary School", score: "9.8 CGPA", year: "2019" },
 ];
 
